@@ -22,6 +22,8 @@ typedef void (^IHKeyboardAvoidingBlock)(BOOL isShowing, float duration, float di
 // use this call for general avoiding
 + (void)setAvoidingView:(UIView *)avoidingView;
 
+// if you want the to handle code based view with layout on frames instead of constraints
++ (void)setAvoidingView:(UIView *)avoidingView withTriggerView:(UIView *)triggerView useConstraints:(BOOL)shouldUseConstraints;
 // if you want the triggering view to be different to the avoiding view, use this
 + (void)setAvoidingView:(UIView *)avoidingView withTriggerView:(UIView *)triggerView;
 // if you want additional trigger views, use this

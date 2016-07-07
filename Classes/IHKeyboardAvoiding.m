@@ -235,14 +235,18 @@ static IHKeyboardAvoidingBlock _avoidingBlock;
     [self setAvoidingView:avoidingView withTriggerView:avoidingView];
 }
 
-+ (void)setAvoidingView:(UIView *)avoidingView withTriggerView:(UIView *)triggerView;
++ (void)setAvoidingView:(UIView *)avoidingView withTriggerView:(UIView *)triggerView {
+    [self setAvoidingView:avoidingView withTriggerView:triggerView useConstraints:_avoidingView.superview.constraints.count > 0];
+}
+
++ (void)setAvoidingView:(UIView *)avoidingView withTriggerView:(UIView *)triggerView useConstraints:(BOOL)shouldUseConstraints;
 {
     [self init];
     
     [_triggerViews removeAllObjects];
     [_triggerViews addObject:triggerView];
     _avoidingView = avoidingView;
-    _avoidingViewUsesAutoLayout = _avoidingView.superview.constraints.count > 0;
+    _avoidingViewUsesAutoLayout = shouldUseConstraints;
     _paddingCurrent = _padding;
     _avoidingBlock = nil;
     
